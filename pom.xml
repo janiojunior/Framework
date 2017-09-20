@@ -29,7 +29,17 @@
 			<artifactId>eclipselink</artifactId>
 			<version>2.6.5-RC2</version>
 		</dependency>
+
+		<!-- primefaces -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>6.1</version>
+		</dependency>
+		
 	</dependencies>
+	
+	
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
