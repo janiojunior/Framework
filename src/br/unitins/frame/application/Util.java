@@ -1,9 +1,11 @@
 package br.unitins.frame.application;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 public class Util {
@@ -40,5 +42,17 @@ public class Util {
 		for (String message : listMessages) {
 			errorMessage(message);
 		}
+	}
+	
+	public static boolean redirect(String page) {
+		try {
+			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+			System.out.println("\\n\\n"+ec.getRequestContextPath());
+			ec.redirect(ec.getRequestContextPath() +"/faces/"+ page);
+			return true;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

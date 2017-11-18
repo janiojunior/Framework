@@ -2,6 +2,7 @@ package br.unitins.frame.controller;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
@@ -39,7 +40,6 @@ public abstract class Controller<T extends Model<? super T>> {
 			em.getTransaction().rollback();
 			Util.errorMessage(e.getMessage());
 		}
-		
 	}
 	
 	public void update(ActionEvent actionEvent) {
