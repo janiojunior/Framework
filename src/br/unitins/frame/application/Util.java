@@ -8,6 +8,8 @@ import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import org.primefaces.context.RequestContext;
+
 public class Util {
 
 	public static void message(Severity severity, String msg) {
@@ -47,12 +49,21 @@ public class Util {
 	public static boolean redirect(String page) {
 		try {
 			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-			System.out.println("\\n\\n"+ec.getRequestContextPath());
 			ec.redirect(ec.getRequestContextPath() +"/faces/"+ page);
+//			request.getRequestDispatcher("/page.xhtml").forward(request, response);
+//			FacesContext.getCurrentInstance().getExternalContext().redirect(ec.getRequestContextPath() +"/faces/"+ page);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public static boolean redirectNewPage(String page) {
+			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+			RequestContext r = RequestContext.getCurrentInstance();
+			String url = ec.getRequestContextPath() +"/faces/"+ page;
+			r.execute("window.open('"+url+"', '_newtab') ");
+			return true;
 	}
 }
