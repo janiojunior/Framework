@@ -2,7 +2,6 @@ package br.unitins.frame.controller;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
 import javax.faces.event.ActionEvent;
 import javax.persistence.EntityManager;
